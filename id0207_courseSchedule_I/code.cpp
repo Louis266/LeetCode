@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class solution
+class Solution
 {
 
 private:
@@ -70,3 +70,21 @@ public:
         
     }
 };
+
+int main()
+{
+    vector<vector<int>> relations_1 = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
+
+    Solution s;
+    if(s.canFinish(4, relations_1))
+    {
+        cout << "Yes you can finish them in order\n";
+    } else
+    {
+        cout << "No, not a good idea. There is a loop\n";
+    }
+    
+
+
+    
+}
