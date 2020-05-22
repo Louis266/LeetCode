@@ -1,3 +1,4 @@
 #ignore all exe/out file
 *.out
 *.exe
+.vscode/
