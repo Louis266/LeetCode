@@ -37,12 +37,13 @@ int lengthOfLongestSubstring(string s)
             {
                 length = 1;
             }
-            
-            if (i-pos > length)
+
+            if (i - pos +1 > length)
             {
-                length = i-pos;
+                length = i - pos + 1;
+                //cout << "test\n";
             }
-            
+
             cout << "not found:" << '\t' << i << '\t';
             cout << pos << '\t';
             cout << length << endl;
@@ -60,15 +61,19 @@ int main()
 
     string s_3 = "asdfghjkkkkjhl";
 
-    cout << "lenght of the logest str: " << lengthOfLongestSubstring(s_0) << endl;
+    cout << "length of the logest str: \n"
+         << lengthOfLongestSubstring(s_0) << endl;
     cout << "=======================================" << endl;
 
-    cout << "lenght of the logest str: " << lengthOfLongestSubstring(s_1) << endl;
+    cout << "length of the logest str: \n"
+         << lengthOfLongestSubstring(s_1) << endl;
     cout << "=======================================" << endl;
 
-    cout << "lenght of the logest str: " << lengthOfLongestSubstring(s_2) << endl;
+    cout << "length of the logest str: \n"
+         << lengthOfLongestSubstring(s_2) << endl;
     cout << "=======================================" << endl;
 
-    cout << "lenght of the logest str: " << lengthOfLongestSubstring(s_3) << endl;
+    cout << "length of the logest str: \n"
+         << lengthOfLongestSubstring(s_3) << endl;
     cout << "=======================================" << endl;
 }
