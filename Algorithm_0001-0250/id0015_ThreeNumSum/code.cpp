@@ -18,7 +18,7 @@ bool is_element_in_vector(vector<int> v,int element){
 }
 
 
-void backTrack(int i, int cs, int count, vector<int> nums, vector<int> &trace, vector<vector<int>> &res)
+void backTrack(int i, int cs, int count, vector<int> nums, vector<int> &trace, vector<vector<int> > &res)
 {
     if (count == 3 || i == nums.size())
     {
@@ -55,9 +55,9 @@ void backTrack(int i, int cs, int count, vector<int> nums, vector<int> &trace, v
     }
 }
 
-vector<vector<int>> threeSum(vector<int> nums)
+vector<vector<int> > threeSum(vector<int> nums)
 {
-    vector<vector<int>> res;
+    vector<vector<int> > res;
 
     int i = 0;
     int cs = 0;
@@ -69,7 +69,7 @@ vector<vector<int>> threeSum(vector<int> nums)
     return res;
 }
 
-
+/*
 int main(){
     vector<int> nums = {0,3,0,1,1,-1,-5,-5,3,-3,-3,0};
     vector<int> nums_0 = {-1,0,1,2,-1,-4};
@@ -86,4 +86,4 @@ int main(){
         cout << endl;
     }
     
-}
+}*/

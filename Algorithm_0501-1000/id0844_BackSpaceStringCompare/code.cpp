@@ -5,27 +5,66 @@
 
 using namespace std;
 
-bool backspaceCompare(string S, string T) {
-        return build(S) == build(T);
-    }
+bool backspaceCompare(string S, string T)
+{
+    int i = S.length() - 1, j = T.length() - 1;
+    int skipS = 0, skipT = 0;
 
-    string build(string str) {
-        string ret;
-        for (char ch : str) {
-            if (ch != '#') {
-                ret.push_back(ch);
-            } else if (!ret.empty()) {
-                ret.pop_back();
+    while (i >= 0 || j >= 0)
+    {
+        while (i >= 0)
+        {
+            if (S[i] == '#')
+            {
+                skipS++, i--;
+            }
+            else if (skipS > 0)
+            {
+                skipS--, i--;
+            }
+            else
+            {
+                break;
             }
         }
-        return ret;
+        while (j >= 0)
+        {
+            if (T[j] == '#')
+            {
+                skipT++, j--;
+            }
+            else if (skipT > 0)
+            {
+                skipT--, j--;
+            }
+            else
+            {
+                break;
+            }
+        }
+        if (i >= 0 && j >= 0)
+        {
+            if (S[i] != T[j])
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (i >= 0 || j >= 0)
+            {
+                return false;
+            }
+        }
+        i--, j--;
     }
-
+    return true;
+}
 
 int main()
 {
-    string s = "cde";
-    string t = "cde";
+    string s = "gtc#uz#";
+    string t = "gtcm##uz#";
 
     cout << backspaceCompare(s, t) << endl;
 }
