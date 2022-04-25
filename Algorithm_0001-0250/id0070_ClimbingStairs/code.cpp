@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <math.h>
+#include <vector>
 using namespace std;
 int climbStairs(int n) {
     if (n == 1)
@@ -31,6 +32,24 @@ int climbStairs_3(int n) {
     double fibn = pow((1 + sqrt5) / 2, n + 1) - pow((1 - sqrt5) / 2, n + 1);
     return (int)round(fibn / sqrt5);
 
+}
+
+int climb(int n)
+{
+    if (n <= 1)
+    {
+        return n;
+    }
+    vector<int> dp(n+1);
+    dp[1] = 1;
+    dp[2] = 2;
+    for (int i = 1; i <= n; i++)
+    {
+        dp[i] = dp[i-1] + dp[i-2];
+    }
+    return dp[n];
+     
+    
 }
 
 int main(){

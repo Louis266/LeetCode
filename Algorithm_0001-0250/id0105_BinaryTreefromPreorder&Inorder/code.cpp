@@ -11,6 +11,46 @@ struct TreeNode
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+TreeNode* traversal (vector<int>& inorder, int inorderBegin, int inorderEnd, vector<int> preorder, int preorderBegin, int preorderEnd)
+{
+    if (preorderBegin == preorderEnd) return NULL;
+    
+    int rootValue = preorder[preorderBegin];
+    TreeNode* root = new TreeNode(rootValue);
+
+    if (preorderEnd - preorderBegin == 1) return root; 
+    int delimiterIndex;
+    for (delimiterIndex = inorderBegin; delimiterIndex < inorderEnd; delimiterIndex++)
+    {
+        if (inorder[delimiterIndex] == rootValue) break;
+    }
+    int leftInorderBegin = inorderBegin;
+    int leftInorderEnd = delimiterIndex;
+
+    int rightInorderBegin = delimiterIndex + 1;
+    int rightInorderEnd = inorderEnd;
+
+    int lefPreorderBegin = preorderBegin + 1;
+    int leftPreorderEnd = preorderBegin + 1 + delimiterIndex - inorderBegin;
+
+    int rightPreorderBegin = preorderBegin + 1 + (delimiterIndex - inorderBegin) + 1;
+    int rightPreorderEnd = preorderEnd;
+
+    root->left = traversal(inorder, leftInorderBegin, leftInorderEnd, preorder, lefPreorderBegin, leftPreorderEnd);
+    root->right = traversal(inorder, rightInorderBegin, rightInorderEnd, preorder, rightPreorderBegin, rightPreorderEnd);
+
+    return root;
+}
+
+TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder)
+{
+    if (preorder.size() == 0 || inorder.size() == 0)
+        return NULL;
+    
+    return traversal(inorder, 0, inorder.size(), preorder, 0, preorder.size());
+    
+}
+/*
 TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
 {
     
@@ -81,6 +121,7 @@ void print_tree(TreeNode *t)
     cout << "=" << endl;
     print_tree(t->right);
 }
+*/
 
 int main()
 {
@@ -89,5 +130,5 @@ int main()
 
     TreeNode *t = buildTree(pre_1, in_1);
 
-    print_tree(t);
+    //print_tree(t);
 }
